@@ -18,6 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -48,3 +49,14 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'bootstrap-sass', '~> 3.4.1'
+# gem "jp_prefecture"
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem "ransack"
+gem 'kaminari'
+gem 'pry-byebug'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+gem 'faker'
+gem 'dotenv-rails'
