@@ -1,25 +1,29 @@
 Rails.application.routes.draw do
+ 
+ 
+
+  get 'homes/top'
+
+  get 'homes/about'
+
   devise_for :admins
-  get 'cart_items/index'
-
-  get 'products/new'
-
-  get 'products/edit'
-
-  get 'products/index'
-
-  get 'products/show'
-
-  get 'orders/new'
-
-  get 'orders/log'
-
-  get 'orders/thanx'
-
-  get 'orders/index'
-
-  get 'orders/show'
-
+  
+  namespace :admin do
+    resources :members
+    resources :products
+    resources :genres
+    resources :orders
+    resources :order_products
+  end
+    
   devise_for :members
+  
+    resources :members
+      root 'public/homes#top'
+    resources :shipping_addresses
+    resources :orders
+    resources :products
+    resources :cart_items
+    
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
