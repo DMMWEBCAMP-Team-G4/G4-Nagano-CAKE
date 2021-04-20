@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :shipping_addresses
     resources :orders
     resources :products
-    resources :cart_items
+    resources :cart_items, only:[:index, :create, :update, :destory]
     
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
