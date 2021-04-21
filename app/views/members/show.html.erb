@@ -1,0 +1,53 @@
+<h2 class="head-line title_h2 text-center">
+    <%= last_name(@member)+first_name(@member) %>さんの会員詳細
+</h2>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="showinfo">
+        <p>
+          顧客ID     <%= @member.id %>
+        </p>
+      </div>
+      <div class="showinfo">
+        <p>
+          氏名　　　　　　<%= last_name(@member)+first_name(@member) %>
+        </p>
+      </div>
+      <div class="showinfo">
+        <p>
+          フリガナ　　　　<%= last_name_kana(@member)+first_name_kana(@member) %>
+        </p>
+      </div>
+      <div class="showinfo">
+        <p>
+          郵便番号　　　　<%= @member.postal_code %>
+        </p>
+      </div>
+      <div class="showinfo">
+        <p>
+          住所　　　　　　<%= @member.shipping_address %>
+        </p>
+      </div>
+      <div class="showinfo">
+        <p>
+          電話番号　　　　<%= @member.phone_number %>
+        </p>
+      </div>
+      <div class="showinfo">
+        <p>
+          メールアドレス　<%= @member.email%>
+        </p>
+        <div class="showinfo">会員ステータス
+          <% if @member.member_status == false %>
+            <font color="green">有効</font>
+          <% elsif @member.member_status == true %>
+            <font color="red">退会済み</font>
+          <% end %>
+        </div>
+      </div>
+      
+        <%= link_to "編集する",edit_admin_member_path(@member), class: "btn btn-success edit_shipping_addres_#{@member.id}" %>
+        <%= link_to " 注文履歴一覧を見る", current_index_admin_order_path(@member), class: "btn btn-info" %>
+        
+    </div>
+  </div>
