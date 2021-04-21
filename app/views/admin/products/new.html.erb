@@ -3,7 +3,7 @@
   <div class="row">
   <div class="mx-auto col-8">
 
-    <%= form_with model: @product,local: true do |f| %>
+    <%= form_with model: @product,url:admin_products_path,method: :post,local: true do |f| %>
 
     <div class="form-group">
       <%= f.label :"商品画像" , class:"col-3" %>
