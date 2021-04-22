@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   devise_for :admins
   
   namespace :admin do
-    resources :members
+    resources :members,only:[:index,:show,:edit,:update]
     resources :products
-    resources :genres
+    resources :genres,only:[:index,:create,:edit,:update]
     resources :orders
     resources :order_products
   end
