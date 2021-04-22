@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   
     resources :members
       root 'public/homes#top'
+      get 'public/home/about' => 'public/homes#about'
     resources :shipping_addresses
     resources :orders
     resources :products
