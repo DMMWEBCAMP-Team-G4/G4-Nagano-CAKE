@@ -20,10 +20,11 @@ Rails.application.routes.draw do
 
     resources :members
       root 'public/homes#top'
+      get 'public/home/about' => 'public/homes#about'
     resources :shipping_addresses
     resources :orders
     resources :products,only: [:index,:show]
-    resources :cart_items
-
+    resources :cart_items, only:[:index, :create, :update, :destory]
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

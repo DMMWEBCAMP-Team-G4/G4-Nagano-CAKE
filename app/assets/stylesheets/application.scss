@@ -16,3 +16,36 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.top-img {
+  background-image: url('/top.img.ipg');
+  width: 600px;
+  height: 300px;
+  background-position: center;
+}
+
+footer {
+  height: 100px;
+  line-height: 100px;
+}
+
+.nav-list {
+  margin-right: 20px;
+}
+
+.about-image {
+  width: 500px;
+  height: 300px;
+  position: contain;
+}
+.product-item {
+  display: flex;
+  align-items: stretch;
+}
