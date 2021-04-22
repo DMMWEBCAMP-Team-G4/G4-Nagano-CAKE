@@ -6,6 +6,13 @@ class CartItemsController < ApplicationController
   
   def create
     @cart_item = current_member.cart_items.new(params_cart_item)
+    @update_cart_item = CartItem.find_by(product: @cart_item.product)
+    if @update_cart_item.present?
+      @cart_item.number += @update_cart_item.number
+      @update_cart_item.destroy
+    end
+    @cart_item.save
+    redirect_to products_path
   end
   
   def update
