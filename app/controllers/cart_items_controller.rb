@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
 
   def index
-    @cart_items = current_cart
+    @cart_items = current_member.cart_items
   end
   
   def create
