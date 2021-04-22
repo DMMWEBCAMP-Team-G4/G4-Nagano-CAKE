@@ -1,2 +1,30 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="container">
+  <h2>商品詳細</h2>
+  <div class="row">
+
+    <div class="col-4">
+    	 <div id="img_field">
+    	     <%= attachment_image_tag @product, :image, size: "300x220", fallback: "no_image.jpg" %>
+    	 </div>
+    </div>
+
+    <div class="col-8">
+      <h3><%= @product.name %></h3>
+      <p><%= @product.description %></p>
+      <h4>￥<%= @product.tax_price.to_s(:delimited) %></h4>（税込）
+
+        <div class="col-8 text-center">
+          <% if @product.is_active==true %>
+            <%= form_with model: @cart_item ,url:cart_items_path, method: :post,local: true do |f| %>
+              <%= f.select :number, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+              <%= f.submit "カートに入れる" %>
+            <% end %>
+          <% elsif @product.is_active==false %>
+            <h3>売り切れ中</h3>
+          <% end %>
+        </div>
+
+    </div>
+
+  </div>
+</div>
