@@ -13,4 +13,3 @@ Genre.create(name: '焼き菓子')
 Genre.create(name: 'キャンディ')
 
 Admin.create(email: 'hoge@hoge', encrypted_password: 'g4g4g4')
-
