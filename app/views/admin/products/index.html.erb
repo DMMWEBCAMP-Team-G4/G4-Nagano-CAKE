@@ -1,0 +1,52 @@
+<div class="container">
+  <h2>商品一覧</h2>
+
+    <div class="text-right">
+      <%= link_to new_admin_product_path, class: "btn btn-primary" do %>
+      <i class="fas fa-plus"></i>
+      <% end %>
+    </div>
+
+    <div class="row">
+    <table class="table table-hover">
+
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @products.each do |product| %>
+        <tr>
+          <td>
+            <%= product.id %>
+          </td>
+          <td>
+            <%= link_to admin_product_path(product.id) do %>
+            <%= product.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= product.price.to_s(:delimited) %>
+          </td>
+          <td>
+            <%= product.genre.name %>
+          </td>
+          <td>
+            <% if product.is_active==true %>
+              <span style="color:green">販売中</span>
+            <% elsif product.is_active==false %>
+              <span style="color:gray">販売停止中</span>
+            <% end %>
+        <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+</div>
