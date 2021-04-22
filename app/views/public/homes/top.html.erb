@@ -13,13 +13,14 @@
     <% @products.each do |product| %>
     <div class="col product-item">
       <%= link_to product_path(product.id) do %>
-
+  
       <% end %>
       <p><%= product.name %></p><br>
       <p><%= product.price %></p>
     </div>
     <% end %>
-    <%= paginate @products %>
+    <%= paginate @products %> 
 
   </div>
 </div>
+      <!--<%= attachment_image_tag(product.id, :image_, :fill, 50, 50, fallback: "no_image.jpg") %>-->
