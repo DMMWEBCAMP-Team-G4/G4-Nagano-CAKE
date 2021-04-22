@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  get 'shipping_adresses/index'
+  get 'shipping_adresses/edit'
   get 'homes/top'
 
   get 'homes/about'
