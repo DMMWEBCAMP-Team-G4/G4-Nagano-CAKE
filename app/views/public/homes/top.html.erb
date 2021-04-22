@@ -13,7 +13,7 @@
     <% @products.each do |product| %>
     <div class="col product-item">
       <%= link_to product_path(product.id) do %>
-        <%= attachment_image_tag(product.id, :image_, :fill, 50, 50, fallback: "no_image.jpg") %>
+
       <% end %>
       <p><%= product.name %></p><br>
       <p><%= product.price %></p>
