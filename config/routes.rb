@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   
   	devise_for :members
     resources :addresses,only: [:index, :create, :edit, :update, :destroy]
-    resources :orders, only: [:new, :index, :create, :show, ] do
+    resources :orders, only: [:new, :index, :create, :show] do
       collection do
         post 'log'
         get 'thanx'
