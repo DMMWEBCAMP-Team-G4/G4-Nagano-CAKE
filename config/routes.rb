@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
-
-
   get 'homes/top'
 
   get 'homes/about'
 
+  
   devise_for :admins
 
   namespace :admin do
@@ -16,18 +15,30 @@ Rails.application.routes.draw do
     resources :order_products
   end
 
-  devise_for :members
-
-    resources :members
       root 'public/homes#top'
       get 'public/home/about' => 'public/homes#about'
-    resources :shipping_addresses
+
+      get 'members/my_page', to:'members#show', as: :members
+    resource :members,only: [:update,:edit] do
+  		collection do
+  	     get 'quit'
+  	     patch 'withdraw'
+  	  end 
+  	end
+  
+  	devise_for :members
+    resources :addresses,only: [:index, :create, :edit, :update, :destroy]
     resources :orders
     resources :products,only: [:index,:show]
+<<<<<<< HEAD
     resources :cart_items, only:[:index, :create, :update, :destroy] do
       collection do
         delete 'destroy_all'
       end
     end
+=======
+    resources :cart_items, only:[:index, :create, :update, :destroy]
+
+>>>>>>> origin/develop
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

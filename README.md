@@ -1,24 +1,15 @@
-# README
+<h1>配送先登録/一覧</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<%= form_with model: @address, local:true do |f| %>
 
-Things you may want to cover:
+<div class="field">
+  <%= f.label :郵便番号, class: 'col-3' %><span><%= f.text_field :shipping_postal_code class: '' %></span>
+</div>
 
-* Ruby version
+<div class="field">
+  <%= f.label :住所, class: 'col-3' %><span><%= f.text_field :shipping_address, class: '' %></span>
+</div>
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<div class="field">
+  <%= f.label :宛名, class: 'col-3' %><span><%= f.text_field :receiver, class: '' %></span><%= f.submit "新規登録", class: "col-3 btn btn-success" %>
+</div>
