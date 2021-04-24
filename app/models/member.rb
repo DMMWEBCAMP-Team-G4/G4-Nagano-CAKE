@@ -6,4 +6,10 @@ class Member < ApplicationRecord
 
   has_many :cart_items
   has_many :addresses
+
+  def full_name
+    self.first_name + " " + self.last_name
+  end
+
+
 end

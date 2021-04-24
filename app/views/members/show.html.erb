@@ -5,7 +5,7 @@
         <br>
       </div>
     </div>
-    
+
       <div class="row">
         <div class="col col-sm-2">
           <h3>登録情報</h3>
@@ -14,9 +14,8 @@
           <%=link_to "編集する", edit_members_path, class: "btn btn-success" %>
         </div><br>
       </div>
-      
+
       <div class="row">
-          
           <table class="table table-bordered col-sm-8">
             <tbody>
                 <tr>
@@ -27,7 +26,7 @@
                       <%= @fullname %>
                   </td>
                 </tr>
-                
+
                 <tr>
                   <td class="col col-sm-3 bg-light">
                       カナ
@@ -36,7 +35,7 @@
                       <%=@fullname_kana %>
                   </td>
                 </tr>
-                  
+
                 <tr>
                   <td class="col col-sm-3 bg-light">
                       郵便番号
@@ -45,7 +44,7 @@
                       <%=@member.postal_code %>
                   </td>
                 </tr>
-                
+
                 <tr>
                   <td class="col col-sm-3 bg-light">
                       住所
@@ -54,7 +53,7 @@
                       <%=@member.address %>
                   </td>
                 </tr>
-                
+
                 <tr>
                   <td class="col col-sm-3 bg-light">
                       電話番号
@@ -63,7 +62,7 @@
                       <%=@member.phone_number %>
                   </td>
                 </tr>
-                
+
                 <tr>
                   <td class="col col-sm-3 bg-light">
                       メールアドレス
@@ -75,25 +74,25 @@
              </tbody>
           </table>
       </div><br>
-      
+
       <div class="row">
           <div class="col col-sm-2">
             <h3>配送先</h3>
           </div>
-          
+
           <div class="col col-sm-2 align-self-center">
             <%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %>
           </div>
       </div>
-      
+
       <div class="row">
           <div class="col col-sm-2">
             <h3>注文履歴</h3>
           </div>
-          
+
           <div class="col col-sm-2 align-self-center">
             <%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %>
           </div>
       </div>
-      
+
 </div>
