@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'homes/about'
 
-  
+
   devise_for :admins
 
   namespace :admin do
@@ -23,9 +23,9 @@ Rails.application.routes.draw do
   		collection do
   	     get 'quit'
   	     patch 'withdraw'
-  	  end 
+  	  end
   	end
-  
+
   	devise_for :members
     resources :addresses,only: [:index, :create, :edit, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show, ] do
