@@ -28,17 +28,16 @@ Rails.application.routes.draw do
   
   	devise_for :members
     resources :addresses,only: [:index, :create, :edit, :update, :destroy]
-    resources :orders
+    resources :orders, only: [:new, :index, :create, :show, ] do
+      collection do
+        post 'log'
+        get 'thanx'
+      end
+    end
     resources :products,only: [:index,:show]
-<<<<<<< HEAD
     resources :cart_items, only:[:index, :create, :update, :destroy] do
       collection do
         delete 'destroy_all'
       end
     end
-=======
-    resources :cart_items, only:[:index, :create, :update, :destroy]
-
->>>>>>> origin/develop
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
