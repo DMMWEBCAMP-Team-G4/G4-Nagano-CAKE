@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
 
 
-  get 'shipping_adresses/index'
-  get 'shipping_adresses/edit'
   get 'homes/top'
 
   get 'homes/about'
@@ -23,10 +21,10 @@ Rails.application.routes.draw do
     resources :members
       root 'public/homes#top'
       get 'public/home/about' => 'public/homes#about'
-    resources :shipping_addresses
+    resources :addresses,only: [:index, :create, :edit, :update, :destroy]
     resources :orders
     resources :products,only: [:index,:show]
-    resources :cart_items, only:[:index, :create, :update, :destroy]
-  
+    resources :cart_items, only:[:index, :create, :update, :destory]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
