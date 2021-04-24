@@ -6,6 +6,8 @@ class OrdersController < ApplicationController
   end
   
   def log
+    @cart_items = current_member.cart_items
+    @order = Order.new(member: current_member, method_of_payment: params[:order][:method_of_payment])
   end
 
   def create
