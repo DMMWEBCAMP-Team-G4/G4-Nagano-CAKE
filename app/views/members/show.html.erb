@@ -24,7 +24,7 @@
                       氏名
                   </td>
                   <td class="col col-sm-5">
-                      <%=@member.first_name %>
+                      <%= @fullname %>
                   </td>
                 </tr>
                 
@@ -33,7 +33,7 @@
                       カナ
                   </td>
                   <td class="col col-sm-5">
-                      <%=@member.first_name_kana %>
+                      <%=@fullname_kana %>
                   </td>
                 </tr>
                   
@@ -82,7 +82,7 @@
           </div>
           
           <div class="col col-sm-2 align-self-center">
-            <%= link_to "一覧を見る", shipping_addresses_path, class:"btn btn-primary" %>
+            <%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %>
           </div>
       </div>
       
