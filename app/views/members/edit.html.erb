@@ -4,7 +4,7 @@
 
         <h3 class="col-sm-2 bg-light">会員情報編集</h3>
 
-        <%= form_with(model:@member, url:edit_members_path, local: true ,method: :patch) do |f| %>
+        <%= form_with(model:@member, url: {controller: 'members', action: 'update' }, local: true ,method: :patch) do |f| %>
 
           <div class="edit-form">
             <div class="form-group col-sm-12">
