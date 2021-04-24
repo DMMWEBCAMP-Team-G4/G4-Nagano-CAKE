@@ -1,2 +1,29 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="container">
+  <div class="row">
+		<h2>商品一覧<span>(全<%= @products.count %>件)</span>
+		</h2>
+
+  	<div class="col-10 col-offset-1 d-flex flex-wrap justify-content-between">
+  	  <% @products.each do |product| %>
+
+        <%= link_to product_path(product.id), class: "btn-link", :style=>"color:#0099FF;" do %>
+          <div id="img_field" class="product">
+            <%= attachment_image_tag(product, :image, size: "180x130", fallback: "no_image.jpg") %>
+          </div>
+          <p class="products-name">
+            <%= product.name %>
+          </p>
+
+        <% if product.is_active == true %>
+          <p>¥<%= product.price.to_s(:delimited) %></p>
+        <% elsif product.is_active == false %>
+          <p class="soldout">売り切れ中</p>
+        <% end %>
+        <% end %>
+
+			<% end %>
+
+  	</div>
+  </div>
+</div>
+
