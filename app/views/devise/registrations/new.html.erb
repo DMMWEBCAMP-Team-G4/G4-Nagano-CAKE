@@ -4,11 +4,11 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :名前, class: 'col-3' %><span>(姓)<%= f.text_field :first_name, autofocus: true, class: 'mx-5' %></span>
+    <%= f.label :名前, class: 'col-3' %><span>(姓)<%= f.text_field :first_name, autofocus: true, class: 'mx-5' %></span><span>(名)<%= f.text_field :last_name, autofocus: true, class: 'mx-5' %></span>
   </div>
 
   <div class="field">
-    <%= f.label :フリガナ, class: 'col-3' %><span><%= f.text_field :first_name_kana, autofocus: true, class: 'mx-5' %></span>
+    <%= f.label :フリガナ, class: 'col-3' %><span>(セイ)<%= f.text_field :first_name_kana, autofocus: true, class: 'mx-5' %></span><span>(メイ)<%= f.text_field :last_name_kana, autofocus: true, class: 'mx-5' %></span>
   </div>
 
   <div class="field">
