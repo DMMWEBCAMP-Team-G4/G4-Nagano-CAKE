@@ -12,6 +12,7 @@
           </tr>
         </thead>
         <tbody>
+          <% all_price = 0 %>
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td class="text-left">
@@ -19,13 +20,15 @@
                 <%= cart_item.product.name %>
               </td>
               <td class="text-right">
-                <%= tax_price(cart_item.product.price).to_s(:delimited) %>
+                <%= cart_item.product.price.to_s(:delimited) %>
               </td>
               <td class="text-right">
                 <%= cart_item.number %>
               </td>
               <td class="text-right">
-                <%= cart_item.product.price.to_s(:delimited) %>
+                <% sum_items = cart_item.product.price * cart_item.number %>
+                <%= sum_items.to_s(:delimited) %>
+                <% all_price += sum_items %>
               </td>
             </tr>
           <% end %>
@@ -39,11 +42,11 @@
           </tr>
           <tr>
             <th class="info">商品合計</th>
-            <td class="text-right">商品合計</td>
+            <td class="text-right"><%= all_price.to_s(:delimited) %></td>
           </tr>
           <tr>
             <th class="info">請求金額</th>
-            <td class="text-right">請求金額</td>
+            <td class="text-right"></td>
           </tr>
         </table>
       </div>
@@ -58,14 +61,23 @@
           <tr>
             <th class="info">お届け先</th>
             <td class="text-left">
-              <%= "#{@order.postal_code} #{@order.address} 　#{@order.name}" %>
+              <span><%= @order.shipping_postal_code %></span>
+              <span><%= @order.shipping_address %></span>
+              <span><%= @order.receiver %></span>
             </td>
           </tr>
         </table>
         <div class="col-xs-11">
           <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
             <%= f.hidden_field :shipping_postal_code %>
+            <%= f.hidden_field :shipping_address %>
+            <%= f.hidden_field :receiver %>
+            <%= f.hidden_field :method_of_payment %>
+            <%= f.hidden_field :total_fee %>
+            <%= f.submit "注文を確定する", class: "btn btn-warning center-block col-xs-5" %>
+          <% end %>
         </div>
       </div>
+    <% end %>
   </div>
 </div>

@@ -17,6 +17,7 @@
           </thead>
           
           <tbody>
+            <% all_price = 0 %>
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td>
@@ -33,7 +34,9 @@
                   <% end %>
                 </td>
                 <td>
-                  <%= cart_item.product.price.to_s(:delimited) %>
+                  <% sum_items = cart_item.product.price * cart_item.number %>
+                  <%= sum_items.to_s(:delimited) %>
+                  <% all_price += sum_items %>
                 </td>
                 <td>
                   <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "glyphicon glyphicon-trash btn btn-danger" %>
@@ -51,6 +54,7 @@
               <tr>
                 <td class="warning">合計金額</td>
                 <td class="text-right">
+                  <%= all_price.to_s(:delimited) %>
                 </td>
               </tr>
             </thead>

@@ -3,19 +3,19 @@
     <h2 class="head-line title_h2 text-center">注文情報入力</h2>
     <% if current_member.cart_items.present? %>
       <div class="col-xs-offset-1">
-        <%= form_with model:@order, url:orders_path, method: :post, local: true  do |f| %>
+        <%= form_with model:@order, url:log_orders_path, method: :post, local: true  do |f| %>
           <h3 class="col-xs-3 sub-head text-center"></i>支払い方法</h3>
             <div class="col-xs-10 radio">
-              <%= f.radio_button :payment_method, :"クレジットカード", checked: true %>
+              <%= f.radio_button :method_of_payment, :"クレジットカード", checked: true %>
               <span> クレジットカード</span>
             </div>
             <div class="col-xs-10 radio">
-              <%= f.radio_button :payment_method, :"銀行振込" %>
+              <%= f.radio_button :method_of_payment, :"銀行振込" %>
               <span> 銀行振り込み</span>
             </div>
           <h3 class="col-xs-3 sub-head text-center">お届け先</h3>
             <div class="col-xs-10 radio">
-              <%= f.radio_button :addresses, checked: true %>
+              <%= f.radio_button :shipping_address, "residence", checked: true %>
               <span> ご自身の住所</span></br>
               <span>〒<%= current_member.postal_code %>　<%= current_member.address %></br>
               <span><%= current_member.last_name %><%= current_member.first_name %></span>
@@ -23,14 +23,14 @@
             
             <% if @shipping_address != [] %>
             <div class="col-xs-10 radio">
-              <%= f.radio_button :addresses, "shipping_addresses" %>
+              <%= f.radio_button :shipping_address, "shipping_address" %>
               <span> 登録済住所から選択</span></br>
               <span>  <%= f.collection_select(:shipping_address_id, @shipping_addresses, :id, :order_address) %></span>
             </div>
             <% end %>
             
             <div class="col-xs-10 radio">
-              <%= f.radio_button :address, "new_address" %>
+              <%= f.radio_button :shipping_address, "new_address" %>
               <span> 新しいお届け先</span></br>
               <div class="field form-group col-xs-11">
                 <%= f.label :"郵便番号(ハイフンなし)", class: "col-sm-4 control-label" %>
