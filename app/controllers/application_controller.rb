@@ -11,12 +11,13 @@ class ApplicationController < ActionController::Base
       admin_orders_path
     end
   end
-  
-  def after_sign_out_path_for(resource)
-    if member_signed_out
-      
-     # ログアウト後に遷移するpathを設定
-  end
+
+  # def after_sign_out_path_for(resource)
+  #   if member_signed_out
+
+  #   # ログアウト後に遷移するpathを設定
+  #   end
+  # end
 
 
   def configure_permitted_parameters
