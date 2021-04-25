@@ -8,7 +8,7 @@ class Member < ApplicationRecord
   has_many :addresses
 
   def full_name
-    self.first_name + " " + self.last_name
+    self.last_name + " " + self.first_name
   end
 
 

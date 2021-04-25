@@ -2,8 +2,8 @@ class MembersController < ApplicationController
 
   def show
     @member = current_member
-    @full_name = self.last_name+self.first_name
-    @full_name_kana = self.last_name_kana+self.first_name_kana
+    @full_name = @member.last_name+" "+@member.first_name
+    @full_name_kana = @member.last_name_kana+" "+@member.first_name_kana
   end
 
   def edit
