@@ -1,26 +1,35 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="mx-auto top-img">
-      <p>ようこそ、ながのCAKEへ<br>
-      このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。
+      <p class="top-text">
+        ようこそ、ながのCAKEへ<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
       </p>
     </div>
+    
   </div>
-  <h2>新着商品</h2>
-  <div class="row justify-content-around">
-    <% @products.each do |product| %>
-    <div class="col product-item">
-      <%= link_to product_path(product.id) do %>
-  
+  <div class="row">
+    <h2>新着商品</h2>
+  </div>
+    <div class="row mx-auto">
+      <% @products.first(5).each do |product| %>
+        <div class="product-item col-3">
+          <div id="img_field" class="product">
+            <%= link_to product_path(product.id) do %>
+              <%= attachment_image_tag(product, :image, size: "180x130", fallback: "no_image.jpg") %>
+              <p><%= product.name %></p>
+            <% end %>
+            <p>
+              ¥<%= product.price.to_s(:delimited) %>
+            </p>
+          </div>
+        </div>
       <% end %>
-      <p><%= product.name %></p><br>
-      <p><%= product.price %></p>
     </div>
-    <% end %>
-    <%= paginate @products %> 
-
-  </div>
+    <div class="col-xs-11">
+			  <%= link_to ">>>>他の商品も見る<<<<", products_path, class: "btn-link  pull-right" %>
+		</div>
+    
 </div>
- 
