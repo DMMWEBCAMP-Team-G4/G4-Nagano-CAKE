@@ -26,7 +26,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    byebug
     @order.save(order_params)
     redirect_to thanx_orders_path
   end
