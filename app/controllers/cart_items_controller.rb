@@ -12,7 +12,7 @@ class CartItemsController < ApplicationController
       @update_cart_item.destroy
     end
     @cart_item.save
-    redirect_to products_path
+    redirect_to cart_items_path
   end
   
   def update

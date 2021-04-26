@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
+
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
       admin_orders_path
@@ -11,7 +12,6 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :admin
