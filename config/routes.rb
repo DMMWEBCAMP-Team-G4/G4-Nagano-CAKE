@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :members,only:[:index,:show,:edit,:update]
     resources :genres,only:[:index,:create,:edit,:update]
     resources :products,only: [:index,:new,:create,:show,:edit,:update]
-    resources :orders
-    resources :order_products
+    resources :orders,only: [:index, :show, :update]
+      resource :order_products,only: [:update]
   end
 
       root 'public/homes#top'
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   	  sessions: 'members/sessions'
   	}
     resources :addresses,only: [:index, :create, :edit, :update, :destroy]
-    resources :orders, only: [:new, :index, :create, :show, ] do
+    resources :orders, only: [:new, :index, :create, :show] do
       collection do
         post 'log'
         get 'thanx'
