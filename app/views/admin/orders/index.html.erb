@@ -17,12 +17,12 @@
         <% @orders.each do |order| %>
         <tr>
           <td>
-            <%= link_to admin_product_path(product.id) do %>
+            <%= link_to admin_order_path(order.id) do %>
             <%= order.created_at %>
             <% end %>
           </td>
           <td>
-            <%= full_name(order.member) %>
+            <%= order.member.last_name + order.member.first_name %>
           </td>
           <td>
             <%= order.order_products.count %>
