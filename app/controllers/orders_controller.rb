@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_member.orders
+    @orders = Order.all
   end
 
   def show
