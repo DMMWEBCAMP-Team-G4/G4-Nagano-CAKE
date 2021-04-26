@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
     
     @cart_items = current_member.cart_items
     @cart_items.each do |cart_item|
-      OrderProduct.create(product: cart_item.product, order: @order, number: cart_item.number)
+      OrderProduct.create(product: cart_item.product, order: @order, number: cart_item.number, price: cart_item.product.price)
     end
     @cart_items.destroy_all
   end
@@ -45,12 +45,11 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_member.orders
+    @orders = Order.where(member_id: current_member.id).page(params[:page]).per(10)
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details
   end
   
   private

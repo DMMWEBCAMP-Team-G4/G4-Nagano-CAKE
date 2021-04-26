@@ -82,9 +82,9 @@
                 <%= sum_items.to_s(:delimited) %>
                 <% all_price += sum_items %>
               </td>
-              <%= form_with model:@order_product, url:admin_order_path(order_product), method: :patch, local: true do |f| %>
+              <%= form_with model:@order_product, url:admin_order_products_path(order_product), method: :patch, local: true do |f| %>
               <td>
-                <%= f.select :making_status, OrderProduct.making_statuses.keys, class: "order-status" %>
+                <%= f.select :making_status, OrderProduct.making_statuses, class: "order-status" %>
                 <%= f.submit "更新", class: "btn btn-warning" %>
               </td>
               <% end %>
