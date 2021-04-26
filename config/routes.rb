@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   	  end
   	end
 
-  	devise_for :members
+  	devise_for :members, controllers: {
+  	  sessions: 'members/sessions'
+  	}
     resources :addresses,only: [:index, :create, :edit, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show, ] do
       collection do
