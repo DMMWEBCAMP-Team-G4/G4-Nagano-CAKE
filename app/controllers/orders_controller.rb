@@ -21,14 +21,21 @@ class OrdersController < ApplicationController
         @order.shipping_postal_code = params[:order][:shipping_postal_code]
         @order.shipping_address = params[:order][:shipping_address]
         @order.receiver = params[:order][:receiver]
+        @ship = "1"
       end
   end
 
   def create
     @order = Order.new(order_params)
-    byebug
     @order.save(order_params)
     redirect_to thanx_orders_path
+    
+    if params[:order][:ship] == "1"
+      current_member.address.create(address_params)
+    end
+    
+    @cart_items = current_member.cart_items
+    
   end
   
   def thanx
@@ -47,5 +54,9 @@ class OrdersController < ApplicationController
   
   def order_params
     params.require(:order).permit(:member_id, :shipping_postal_code, :shipping_address, :receiver, :method_of_payment, :total_fee, :select_address)
+  end
+  
+  def address_params
+    params.require(:order).permit(:shipping_postal_code, :shipping_address, :receiver)
   end
 end

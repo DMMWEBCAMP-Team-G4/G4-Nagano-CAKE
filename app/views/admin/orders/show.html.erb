@@ -26,7 +26,7 @@
             配送先
           </div>
           <div class="col-xs-8">
-            <%= @order.shiiping_postal_code %><%= @order.shipping_address %></br>
+            〒<%= @order.shipping_postal_code %> <%= @order.shipping_address %></br>
             <%= @order.receiver %>
           </div>
         </div>
@@ -45,7 +45,7 @@
             注文ステータス
           </div>
           <div class="col-xs-6">
-            <%= f.select :order_status, Order.order_status.keys, class: "order_status" %>
+            <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
           </div>
           <div class="col-xs-2">
             <%= f.submit "更新", class: "btn btn-primary" %>
