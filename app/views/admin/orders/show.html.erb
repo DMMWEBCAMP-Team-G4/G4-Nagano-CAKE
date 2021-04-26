@@ -8,7 +8,7 @@
             購入者
           </div>
           <div class="col-xs-8">
-            <%= @order.member.last_name %><%= @order.member.first_name %>
+            <%= @order.member.last_name %> <%= @order.member.first_name %>
           </div>
         </div>
         
@@ -78,13 +78,13 @@
                 <%= order_product.number %>
               </td>
               <td class="text-right">
-                <% sum_items = order.product.price * order.product.number %>
+                <% sum_items = order_product.price * order_product.number %>
                 <%= sum_items.to_s(:delimited) %>
                 <% all_price += sum_items %>
               </td>
               <%= form_with model:@order_product, url:admin_order_path(order_product), method: :patch, local: true do |f| %>
               <td>
-                <%= f.select :making_status, OrderProduct.making_status.keys, class: "order-status" %>
+                <%= f.select :making_status, OrderProduct.making_statuses.keys, class: "order-status" %>
                 <%= f.submit "更新", class: "btn btn-warning" %>
               </td>
               <% end %>

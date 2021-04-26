@@ -35,7 +35,10 @@ class OrdersController < ApplicationController
     end
     
     @cart_items = current_member.cart_items
-    
+    @cart_items.each do |cart_item|
+      OrderProduct.create(product: cart_item.product, order: @order, number: cart_item.number)
+    end
+    @cart_items.destroy_all
   end
   
   def thanx
