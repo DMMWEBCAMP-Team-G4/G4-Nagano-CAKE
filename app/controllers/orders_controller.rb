@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
-  
+
   def new
     @order = Order.new
     @shipping_addresses = current_member.addresses
   end
-  
+
   def log
     @cart_items = current_member.cart_items
     @order = Order.new(member: current_member, method_of_payment: params[:order][:method_of_payment])
@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     end
     @cart_items.destroy_all
   end
-  
+
   def thanx
   end
 
@@ -52,9 +52,9 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_products = @order.order_products
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:member_id, :shipping_postal_code, :shipping_address, :receiver, :method_of_payment, :total_fee, :select_address)
   end

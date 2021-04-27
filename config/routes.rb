@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
   get 'homes/top'
-
   get 'homes/about'
-
 
   devise_for :admins
 
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
       get 'public/home/about' => 'public/homes#about'
 
       get 'members/my_page', to:'members#show', as: :members
+
     resource :members,only: [:update,:edit] do
   		collection do
   	     get 'quit'

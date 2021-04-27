@@ -1,7 +1,11 @@
 class Admin::OrdersController < ApplicationController
 
   def index
-    @orders=Order.all.page(params[:page]).per(10)
+    if params[:member_id]
+      @orders=Order.where(member_id: params[:member_id]).page(params[:page]).per(10)
+    else
+      @orders=Order.all.page(params[:page]).per(10)
+    end
   end
 
   def show
@@ -14,10 +18,10 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
     redirect_to admin_order_path(@order)
   end
-  
+
   private
-  
-  def order_params
+
+  def order_params  
     params.require(:order).permit(:status)
-  end
+　end
 end
