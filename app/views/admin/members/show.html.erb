@@ -1,0 +1,64 @@
+<h2 class="head-line title_h2 offset-md-2">
+    <%= @full_name %>さんの会員詳細
+</h2>
+  <div class="row">
+    <table class="table table-borderless col-sm-8 offset-md-2">
+      <tbody>
+        <tr>
+          <td class="col col-sm-3">会員ID</td>
+          <td class="col col-sm-5"><%= @member.id %></td>
+        </tr>
+
+        <tr>
+          <td class="col col-sm-3">氏名</td>
+          <td class="col col-sm-5"><%= @full_name %></td>
+        </tr>
+
+        <tr>
+          <td class="col col-sm-3">カナ</td>
+          <td class="col col-sm-5"><%=@full_name_kana %></td>
+        </tr>
+
+        <tr>
+          <td class="col col-sm-3">郵便番号</td>
+          <td class="col col-sm-5"><%=@member.postal_code %></td>
+        </tr>
+
+        <tr>
+          <td class="col col-sm-3">住所</td>
+          <td class="col col-sm-5"><%=@member.address %></td>
+        </tr>
+
+        <tr>
+          <td class="col col-sm-3">電話番号</td>
+          <td class="col col-sm-5"><%=@member.phone_number %></td>
+        </tr>
+
+        <tr>
+          <td class="col col-sm-3">メールアドレス</td>
+          <td class="col col-sm-5"><%=@member.email %></td>
+        </tr>
+
+        <tr>
+          <td class="col col-sm-3">会員ステータス</td>
+          <td class="col col-sm-5">
+            <% if @member.member_status == false %>
+              <font color="green">有効</font>
+            <% elsif @member.member_status == true %>
+              <font color="red">退会済み</font>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div><br>
+
+    <div class=row>
+      <div class="col col-2 offset-md-3">
+        <%= link_to "編集する",edit_admin_member_path(@member), class: "btn btn-success" %>
+      </div>
+
+      <div class="col">
+        <%= link_to " 注文履歴一覧を見る", admin_orders_path(member_id: @member.id), class: "btn btn-info" %>
+      </div>
+    </div>

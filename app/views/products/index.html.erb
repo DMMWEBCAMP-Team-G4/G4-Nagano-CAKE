@@ -1,0 +1,31 @@
+<div class="container">
+		<h2>商品一覧<span>(全<%= @product_all.count %>件)</span>
+		</h2>
+  <div class="row">
+
+  	  <% @products.each do |product| %>
+    	<div class="col-3">
+
+        <%= link_to product_path(product.id), class: "btn-link", :style=>"color:#0099FF;" do %>
+          <div id="img_field" class="product">
+            <%= attachment_image_tag(product, :image, size: "180x130", fallback: "no_image.jpg") %>
+          </div>
+          <p class="products-name">
+            <%= product.name %>
+          </p>
+
+        <% if product.is_active == true %>
+          <p>¥<%= product.price.to_s(:delimited) %></p>
+        <% elsif product.is_active == false %>
+          <p class="soldout">売り切れ中</p>
+        <% end %>
+        <% end %>
+    	</div>
+			<% end %>
+
+      <div class="col-12 text-center"><%= paginate @products %></div>
+      <!--ページング機能-->
+
+  </div>
+</div>
+

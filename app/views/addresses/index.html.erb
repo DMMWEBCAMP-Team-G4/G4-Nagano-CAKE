@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <h2>配送先登録/一覧</h2>
+  </div>
+
+    <%= form_with model: @new_address, url: {controller: 'addresses', action: 'create' }, local:true do |f| %>
+
+      <div class="field">
+        <%= f.label :郵便番号, class: 'col-3' %><span><%= f.text_field :shipping_postal_code, class: '' %></span>
+      </div>
+
+      <div class="field">
+        <%= f.label :住所, class: 'col-3' %><span><%= f.text_field :shipping_address, class: '' %></span>
+      </div>
+
+      <div class="field">
+        <%= f.label :宛名, class: 'col-3' %><span><%= f.text_field :receiver, class: '' %></span>
+        <%= f.submit "新規登録", class: "col-2 btn btn-success btn-sm" %>
+      </div>
+    <% end %>
+
+  <div class="row mt-5">
+    <div class="col-10">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @addresses.each do |address| %>
+          <tr>
+            <td><%= address.shipping_postal_code %></td>
+            <td><%= address.shipping_address %></td>
+            <td><%= address.receiver %></td>
+            <td><%= link_to '編集する', edit_address_path(address.id), class: 'btn btn-success' %></td>
+            <td><%= link_to '削除する', address_path(address), method: :delete, class: 'btn btn-danger' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
