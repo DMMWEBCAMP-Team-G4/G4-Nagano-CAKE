@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :genres,only:[:index,:create,:edit,:update]
     resources :products,only: [:index,:new,:create,:show,:edit,:update]
     resources :orders,only: [:index, :show, :update]
-      resource :order_products,only: [:update]
+      resources :order_products,only: [:update]
   end
 
       root 'public/homes#top'
