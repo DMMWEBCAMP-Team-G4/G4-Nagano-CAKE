@@ -6,8 +6,5 @@ class CartItem < ApplicationRecord
     (self.price * 1.10).round
   end
   
-  def sub_price
-    (self.price * number).round
-  end
   
 end
