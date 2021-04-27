@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
         @order.shipping_postal_code = params[:order][:shipping_postal_code]
         @order.shipping_address = params[:order][:shipping_address]
         @order.receiver = params[:order][:receiver]
+        @ship = "1"
       end
   end
 
@@ -28,23 +29,37 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.save(order_params)
     redirect_to thanx_orders_path
+    
+    if params[:order][:ship] == "1"
+      current_member.address.create(address_params)
+    end
+    
+    @cart_items = current_member.cart_items
+    @cart_items.each do |cart_item|
+      OrderProduct.create(product: cart_item.product, order: @order, number: cart_item.number, price: cart_item.product.price)
+    end
+    @cart_items.destroy_all
   end
 
   def thanx
   end
 
   def index
-    @orders = current_member.orders.all
+    @orders = Order.where(member_id: current_member.id).page(params[:page]).per(10)
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    @order_products = @order.order_products
   end
 
   private
 
   def order_params
     params.require(:order).permit(:member_id, :shipping_postal_code, :shipping_address, :receiver, :method_of_payment, :total_fee, :select_address)
+  end
+  
+  def address_params
+    params.require(:order).permit(:shipping_postal_code, :shipping_address, :receiver)
   end
 end
